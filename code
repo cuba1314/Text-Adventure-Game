@@ -1,0 +1,122 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class no{};
+
+void start(){
+
+ cout<< "Welcome to Dangerous dave\n";
+ cout<< "Type yes if you would like to play: \n";
+ string start;
+ cin>>start;
+ if(start != "yes")throw no{};
+}
+int main(){
+
+vector<int>health{100};
+vector<int>damage{health[0]-20};
+
+vector<string>backpack;
+
+while (health[0]>0){
+backpack.push_back("knife");
+backpack.push_back("flashlight");
+
+start();
+cout<<"\nYou and your friends are out in the woods camping\n";
+cout<<"suddenly you start feeling as if someone was watching you\n";
+cout<<"you try to alert your firends, but they don't seem to wake up\n";
+cout<<"do you run away and leave your friends behind or you go investigate to keep your friends from being harmed? \n";
+string decision;
+cin>>decision;
+if(decision=="investigate"){
+cout<<"\nwould you like to check your backpack?";
+string d2;
+cin>>d2;
+if(d2 == "yes"){
+cout<<"\ncurrent items in backpack are: \n";
+for (string x:backpack){
+cout<<x<<" ";}
+
+cout<<"\n\nwould you like to grab any items from the backpack?(type one of the items inside) ";
+cin>>d2;
+if (d2==backpack[0]){
+backpack[0]="empty";
+cout<<"you grabbed the knife\n";
+cout<<"you go investigate, but can barely see\n";
+cout<<"suddenly you feel someone running towards you\n";
+cout<<"you try to use your knife, but it is useless since you can't see\n";
+cout<<"everything goes black\n\n";
+cout<<"GAME OVER";
+}
+
+else if (d2==backpack[1]){
+backpack[1]="empty";
+cout<<"you grabbed the flashlight\n\n";
+cout<<"You walk forward and notive something hiding \n";
+cout<<"You keep moving forward towards it and suddenly an evil gremlin comes out";
+cout<<"he tries to attack you, but you run away\n";
+cout<<"would you like to grab knife from backpack and fight him?\n" ;
+string fight;
+cin>>fight;
+if(fight=="yes"){
+cout<< "\nyou reached into backpacked and grabbed knife\n";
+backpack[0]="empty";
+cout<<"you turn around to fight him\n";
+cout<<"As you are turning around the goblin attacks you\n";
+cout<<"He scratches your face\n";
+health[0]=damage[0];
+damage[0]=health[0]-20;
+cout<<"your current health is: "<<health[0]<<"/10\n";
+cout<<"you attack the goblin an the goblin dies\n";
+cout<<"you check his pockets and find a map of the are\n";
+cout<<"would you like to store map? \n";
+string map;
+cin>>map;
+if(map=="yes"){
+backpack.push_back("map");
+cout<<"you look into the map and notice there is a town near by\n";
+cout<<"you go into the woods following the trail on the map\n";
+cout<<"be careful who knows who might be watching\n\n";
+cout<<"END OF CHAPTER 1";
+health[0]=0;}
+else if(map=="no"){
+cout<<"you head into the unkown with nothing to guide you, but your instincts\n\n";
+cout<<"END OF CHAPTER 1";
+health[0]=0;
+}
+
+
+}
+
+else if(fight != "yes"){
+  cout<<  "you keep running, but the goblin catches up to you\n ";
+  cout<<"everything goes black\n\n";
+ cout<<"GAME OVER";
+
+}
+
+}
+else if(d2!="yes"){
+cout<<"you go investigate, but can barely see\n";
+cout<<"suddenly you feel someone running towards you\n";
+cout<<"everything goes black\n\n";
+cout<<"GAME OVER";
+}
+
+else{
+cout<<"bye";
+throw no{};
+}
+
+}
+
+else{
+  cout<<"You ran away and got home safe, but your friends were later found dead";
+  throw no{};
+}
+}
+}
+}
